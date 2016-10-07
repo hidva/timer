@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include <exception/errno_exception.h>
 #include <common/utils.h>
 
@@ -101,7 +103,7 @@ void TimerManager::StartTimer(uint64_t timeout, uint64_t repeat, const timer_cal
 
     auto AddTo = [&] (std::vector<WorkThread>::iterator iter) noexcept -> int {
         try {
-            DoAddTo();
+            DoAddTo(*iter);
             return (!timer_req);
         } catch (...) {
             return 0;
@@ -229,7 +231,7 @@ inline void CloseTimer(uv_timer_t *timer_handle) noexcept {
 }
 
 void OnTimer(uv_timer_t *handle) noexcept {
-    TimerManager::TimerRequest *timer_req = (TimerManager::TimerRequest *)timer_handle->data;
+    TimerManager::TimerRequest *timer_req = (TimerManager::TimerRequest *)handle->data;
     uv_loop_t *uv_loop = handle->loop;
 
     unsigned int cb_rc = timer_req->Call(0);

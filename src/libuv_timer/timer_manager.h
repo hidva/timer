@@ -110,7 +110,6 @@ public:
         }
     };
 
-private:
 
     struct WorkThread {
         bool started = false;
