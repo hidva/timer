@@ -2,12 +2,51 @@
 *.slo
 *.lo
 *.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
 
 # Compiled Dynamic libraries
 *.so
 *.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
 
 # Compiled Static libraries
 *.lai
 *.la
 *.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+
+# dir
+bin/
+objs/
+.idea/
+
+# vim
+*.swp
+
+# QtCreator
+*.creator
+*.creator.user*
+*.config
+*.includes
+*.files
+*.autosave
+tags
+
+# thrift
+
+# 部署
+
